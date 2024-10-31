@@ -1,2 +1,6 @@
 .env
 log
+*.pyc
+__pycache__/
+/odoo-web-data
+/odoo-db-data

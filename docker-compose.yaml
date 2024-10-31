@@ -14,6 +14,9 @@ services:
       - HOST=db
       - USER=${DB_USER}  
       - PASSWORD=${DB_PASSWORD}
+      - DB_HOST=db  # Para indicar el host de la base de datos
+      - DB_PORT=5432  # Puerto por defecto de PostgreSQL
+      - DB_NAME=${DB_NAME}  # Nombre de la base de datos
   db:
     image: postgres:latest
     environment:
