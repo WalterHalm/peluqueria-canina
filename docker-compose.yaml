@@ -1,6 +1,8 @@
 services:
   web:
-    image: odoo:17    
+    image: odoo:17
+    env_file:
+      - .env    
     depends_on:
       - db
     ports:
