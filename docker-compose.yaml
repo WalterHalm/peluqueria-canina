@@ -12,14 +12,14 @@ services:
       - ./log:/var/log/odoo
     environment:
       - HOST=db
-      - USER=${DB_USER}
-      - PASSWORD=${DB_PASSWORD}
+      - USER=walter
+      - PASSWORD=Carpetas2275
   db:
     image: postgres:latest
     environment:
       - POSTGRES_DB=odoo
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}    
+      - POSTGRES_USER=walter
+      - POSTGRES_PASSWORD=Carpetas2275      
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
