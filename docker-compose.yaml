@@ -1,6 +1,6 @@
 services:
   web:
-    image: odoo:17  
+    image: odoo:17
     depends_on:
       - db
     ports:
@@ -10,13 +10,13 @@ services:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
       - ./log:/var/log/odoo
+    env_file: .env  # Carga las variables de entorno desde el archivo .env
     environment:
-      - HOST=db
-      - USER=${DB_USER}  
-      - PASSWORD=${DB_PASSWORD}
-      - DB_HOST=db  # Para indicar el host de la base de datos
+      - DB_HOST=db
+      - DB_USER=${DB_USER}  
+      - DB_PASSWORD=${DB_PASSWORD}
       - DB_PORT=5432  # Puerto por defecto de PostgreSQL
-      - DB_NAME=${DB_NAME}  # Nombre de la base de datos
+
   db:
     image: postgres:latest
     environment:
@@ -30,5 +30,6 @@ services:
 volumes:
   odoo-web-data:
   odoo-db-data:
+
 
 
