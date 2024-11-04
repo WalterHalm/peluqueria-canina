@@ -4,3 +4,4 @@ log
 __pycache__/
 /odoo-web-data
 /odoo-db-data
+odoo_pg_pass
