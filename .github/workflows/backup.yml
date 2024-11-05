@@ -19,7 +19,7 @@ jobs:
 
       - name: Install AWS CLI
         run: |
-          curl -O https://awscli.amazonaws.com/AWSCLIV2.zip
+          curl -o AWSCLIV2.zip https://awscli.amazonaws.com/AWSCLIV2.zip
           if [ -f AWSCLIV2.zip ]; then
             echo "Download successful, proceeding to unzip..."
             unzip AWSCLIV2.zip
