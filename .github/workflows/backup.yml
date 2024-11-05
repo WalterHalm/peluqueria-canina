@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Remove existing AWS CLI
+        run: |
+          sudo rm -rf /usr/local/aws-cli
+
       - name: Install AWS CLI
         run: |
           curl "https://awscli.amazonaws.com/AWSCLIV2.zip" -o "AWSCLIV2.zip"
