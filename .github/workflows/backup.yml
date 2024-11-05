@@ -14,21 +14,12 @@ jobs:
         run: |
           sudo rm -rf /usr/local/aws-cli
 
-      - name: Install unzip
-        run: sudo apt-get install -y unzip
-
       - name: Install AWS CLI
         run: |
-          curl -o AWSCLIV2.zip https://awscli.amazonaws.com/AWSCLIV2.zip
-          if [ -f AWSCLIV2.zip ]; then
-            echo "Download successful, proceeding to unzip..."
-            unzip AWSCLIV2.zip
-            sudo ./aws/install --update
-          else
-            echo "Download failed!"
-            exit 1
-          fi
-      
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+
       - name: Backup Database
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
