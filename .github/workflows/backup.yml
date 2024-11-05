@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '0 2 * * *' # Programado para ejecutarse todos los días a las 2 AM UTC
 
+  workflow_dispatch:
+  
 jobs:
   backup:
     runs-on: ubuntu-latest
