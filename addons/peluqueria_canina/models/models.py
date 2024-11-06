@@ -20,7 +20,7 @@ class Mascota(models.Model):
     comportamiento = fields.Text(string="Comportamiento")
     descripcion = fields.Text(string="Descripcion")
     turno_prox = fields.Datetime(string="Proximo Turno")
-    image = fields.Binary(string="Imagen")
+    image = fields.Binary("Imagen")
     owner_id = fields.Many2one('res.partner', string="Dueño", required=True)
     owner_phone = fields.Char(string="Teléfono", related='owner_id.phone', store=False)
     
