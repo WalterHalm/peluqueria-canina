@@ -4,7 +4,7 @@
 ODOO_DB_NAME=peluqueria-canina
 ODOO_DB_USER=postgres
 ODOO_DB_PASSWORD=Carpetas22
-ODOO_DB_HOST=http://18.231.162.172/ # O la IP del contenedor o servicio DB si es remoto
+ODOO_DB_HOST=18.231.162.172/ # O la IP del contenedor o servicio DB si es remoto
 ODOO_DB_PORT=5432
 S3_BUCKET_NAME=peluqueriacaninachajari
 DATE=$(date +\%F_\%T) # Formato de fecha para el archivo de backup
