@@ -11,6 +11,7 @@ class Mascota(models.Model):
     fecha_nacimiento = fields.Date(string="Fecha de Nacimiento")
     edad = fields.Integer(string="Edad", compute="_compute_edad", store=True)
     raza = fields.Char(string="Raza")
+    color = fields.Char(string="Color")
     peso = fields.Float(string="Peso")
     cuidado_especial = fields.Selection(
         string='Cuidado Especial?', default="no",

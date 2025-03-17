@@ -62,6 +62,7 @@
                   <field name="edad"/>
                   <field name="raza"/>
                   <field name="peso"/>
+                   <field name="color"/>
                   <field name="cuidado_especial"/>
                   <field name="cual" invisible="cuidado_especial == 'no'"/>
                   <field name="comportamiento"/>
