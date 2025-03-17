@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Your existing Form View inheritance -->
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.payment</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_register_payment" 
+                        type="object" 
+                        string="Registrar pago" 
+                        class="btn-primary"
+                        invisible="state not in ('sale', 'done')"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='order_lines']" position="after">
+                <page string="Pagos" name="payments">
+                    <group>
+                        <group>
+                            <field name="payment_amount"/>
+                            <field name="total_paid"/>
+                            <field name="remaining_balance"/>
+                        </group>
+                    </group>
+                    <field name="payment_ids">
+                        <tree>
+                            <field name="payment_date"/>
+                            <field name="amount"/>
+                            <field name="notes"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Your existing List View inheritance -->
+    <record id="view_order_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.order.tree.payment</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="total_paid"/>
+                <field name="remaining_balance"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Add these new records for Customers with Debt -->
+    <!-- Tree View for Customers with Debt -->
+    <record id="view_customers_with_debt_tree" model="ir.ui.view">
+        <field name="name">sale.order.debt.tree</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="date_order"/>
+                <field name="name"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="total_paid" sum="Paid"/>
+                <field name="remaining_balance" sum="Remaining" decoration-danger="remaining_balance > 0"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View for Customers with Debt -->
+    <record id="view_customers_with_debt_search" model="ir.ui.view">
+        <field name="name">sale.order.debt.search</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="name"/>
+                <filter string="With Debt" name="with_debt" domain="[('remaining_balance', '>', 0)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Cliente" name="group_by_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Estado" name="group_by_state" context="{'group_by': 'state'}"/>
+                    <filter string="Fecha de pago" name="group_by_date" context="{'group_by': 'date_order:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Customers with Debt -->
+    <record id="action_customers_with_debt" model="ir.actions.act_window">
+        <field name="name">Clientes con Deudas</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('remaining_balance', '>', 0)]</field>
+        <field name="context">{
+            'search_default_group_by_partner': 1,
+        }</field>
+        <field name="view_id" ref="view_customers_with_debt_tree"/>
+        <field name="search_view_id" ref="view_customers_with_debt_search"/>
+    </record>
+</odoo>
+
+
+
+
+ 

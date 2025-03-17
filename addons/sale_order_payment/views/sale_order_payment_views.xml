@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_sale_order_payment_form" model="ir.ui.view">
+        <field name="name">sale.order.payment.form</field>
+        <field name="model">sale.order.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sale_order_id" readonly="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="amount"/>
+                            <field name="payment_date"/>
+                            <field name="payment_method"/>
+                        </group>
+                        <group>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_sale_order_payment_tree" model="ir.ui.view">
+        <field name="name">sale.order.payment.tree</field>
+        <field name="model">sale.order.payment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sale_order_id"/>
+                <field name="partner_id"/>
+                <field name="amount" string="Monto ingresado"/>
+                <field name="payment_date"/>
+                <field name="payment_method"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_sale_order_payment_search" model="ir.ui.view">
+        <field name="name">sale.order.payment.search</field>
+        <field name="model">sale.order.payment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sale_order_id"/>
+                <field name="partner_id"/>
+                <field name="payment_method"/>
+                <group expand="0" string="Group By">
+                    <filter string="Orden de venta" name="group_by_sale_order" context="{'group_by': 'sale_order_id'}"/>
+                    <filter string="Cliente" name="group_by_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Formas de pago" name="group_by_payment_method" context="{'group_by': 'payment_method'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

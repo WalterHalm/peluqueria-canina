@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- First define the action -->
+    <record id="action_sale_order_payments" model="ir.actions.act_window">
+        <field name="name">Pagos de las ordendes de ventas</field>
+        <field name="res_model">sale.order.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Main menu item under Sales -->
+    <menuitem id="menu_sale_order_payments"
+              name="Pagos"
+              parent="sale.sale_menu_root"
+              sequence="15"/>
+    
+    <!-- Submenu for payment list -->
+    <menuitem id="menu_sale_order_payments_list"
+              name="Pagos realizados"
+              parent="menu_sale_order_payments"
+              action="action_sale_order_payments"
+              sequence="10"/>
+
+    <!-- New menu for customers with debt -->
+    <menuitem id="menu_customers_with_debt"
+              name="Clientes con deuda"
+              parent="menu_sale_order_payments"
+              action="action_customers_with_debt"
+              sequence="20"/>
+     
+</odoo>
+
