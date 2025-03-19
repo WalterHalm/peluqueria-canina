@@ -12,6 +12,7 @@ class Mascota(models.Model):
     edad = fields.Integer(string="Edad", compute="_compute_edad", store=True)
     raza = fields.Char(string="Raza")
     color = fields.Char(string="Color")
+    medida = fields.Char(String="Medidas")
     peso = fields.Float(string="Peso")
     cuidado_especial = fields.Selection(
         string='Cuidado Especial?', default="no",
