@@ -34,6 +34,6 @@ Long description of module's purpose
     ],
     'installable': True,
     'license': 'LGPL-3',
-    'icon': 'peluqueria_canina/icon.png',  # Ruta al icono
+    'icon': '/peluqueria_canina/icon.png',  # Ruta al icono
 }
 

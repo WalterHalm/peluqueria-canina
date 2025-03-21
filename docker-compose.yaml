@@ -7,7 +7,7 @@ services:
       - "8069:8069"
     volumes:
       - odoo-web-data:/var/lib/odoo
-      - ./config:/etc/odoo
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/extra-addons
       - ./log:/var/log/odoo
     environment:
@@ -25,6 +25,7 @@ services:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
     secrets:
       - postgresql_password
+
 volumes:
   odoo-web-data:
   odoo-db-data:

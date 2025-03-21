@@ -5,3 +5,6 @@ __pycache__/
 /odoo-web-data
 /odoo-db-data
 odoo_pg_pass
+aws
+awscliv2.zip
+config
